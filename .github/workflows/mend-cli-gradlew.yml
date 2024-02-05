@@ -1,1 +1,28 @@
+name: Mend CLI Scan
 
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: windows-latest 
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'microsoft'
+    - name: Build with gradlew
+      run: gradlew clean build -Dskip.tests
+    - name: Mend CLI Scan
+      env:
+        MEND_EMAIL: ${{secrets.MEND_EMAIL}}
+        MEND_USER_KEY: ${{secrets.MEND_USER_KEY}}
+        MEND_URL: https://saas.mend.io
+      run: |
+        echo Downloading Mend CLI
+        curl https://downloads.mend.io/cli/windows_amd64/mend.exe -o mend.exe
+        echo run Mend dependencies scan
+        .\mend.exe dep
+        
