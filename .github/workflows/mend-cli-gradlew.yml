@@ -15,7 +15,7 @@ jobs:
         distribution: 'microsoft'
     - name: Build with gradlew
 #      run: gradlew clean build -Dskip.tests
-      run: .\gradlew.bat clean build -Dskip.tests
+      run: .\gradlew clean build -Dskip.tests
     - name: Mend CLI Scan
       env:
         MEND_EMAIL: ${{secrets.MEND_EMAIL}}
