@@ -13,8 +13,9 @@ jobs:
       with:
         java-version: '11'
         distribution: 'microsoft'
+    - name: Gradle version
+      run: gradle -v
     - name: Build with gradlew
-#      run: gradlew clean build -Dskip.tests
       run: ./gradlew clean build
     - name: Mend CLI Scan
       env:
@@ -25,5 +26,4 @@ jobs:
         echo 'Downloading Mend CLI'
         curl https://downloads.mend.io/cli/windows_amd64/mend.exe -o mend.exe
         echo 'run Mend dependencies scan'
-        .\mend.exe dep
-        
+        .\mend.exe dep     
