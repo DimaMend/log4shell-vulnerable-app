@@ -15,15 +15,15 @@ jobs:
         distribution: 'microsoft'
     - name: Build with gradlew
 #      run: gradlew clean build -Dskip.tests
-      run: .\gradlew.bat
+      run: .\gradlew.bat clean build -Dskip.tests
     - name: Mend CLI Scan
       env:
         MEND_EMAIL: ${{secrets.MEND_EMAIL}}
         MEND_USER_KEY: ${{secrets.MEND_USER_KEY}}
         MEND_URL: https://saas.mend.io
       run: |
-        echo Downloading Mend CLI
+        echo 'Downloading Mend CLI'
         curl https://downloads.mend.io/cli/windows_amd64/mend.exe -o mend.exe
-        echo run Mend dependencies scan
+        echo 'run Mend dependencies scan'
         .\mend.exe dep
         
