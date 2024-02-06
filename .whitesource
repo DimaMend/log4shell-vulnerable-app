@@ -1,5 +1,5 @@
 {
-  "settingsInheritedFrom": "Dima2021/whitesource-config@master",
+  "settingsInheritedFrom": "DimaMend/whitesource-config@master",
   "scanSettings": { 
     "enableReachability": true
   },
@@ -12,5 +12,3 @@
     }
   }
 }
-
-
